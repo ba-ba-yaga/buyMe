@@ -1,0 +1,36 @@
+<header>
+  <div class="navbar navbar-dark bg-danger shadow-sm">
+    <div class="navbar-brand align-item-center d-flex">
+      <i style="font-size: 40px" class="fas fa-shipping-fast"> </i>
+      <strong style="font-size: 30px">BuyMe</strong>
+      <div class="form-group d-flex">
+        <input
+          class="form-control"
+          [(ngModel)]="searchKey"
+          (keyup)="search($event)"
+          type="text"
+          placeholder="Search products"
+        />
+      </div>
+      <!-- <span class="fas fa-search search-icon"></span> -->
+    </div>
+    <div>
+      <button
+        mat-button
+        style="color: #fff; font-size: 18px"
+        (click)="openDialog()"
+      >
+        Add item
+      </button>
+      <button class="btn btn-danger" routerLink="products">
+        <i style="font-size: 30px" class="fas fa-home"></i>
+      </button>
+      <button class="btn btn-danger" routerLink="cart">
+        <i style="font-size: 30px" class="fas fa-cart-plus"></i>
+        <div style="font-size: 10x" class="badge bg-primary">
+          {{ totalItem }}
+        </div>
+      </button>
+    </div>
+  </div>
+</header>

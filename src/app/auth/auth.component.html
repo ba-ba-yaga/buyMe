@@ -1,0 +1,10 @@
+<div class="centere">
+  <button mat-raised-button color="warn" (click)="onButtonChange('signup')">
+    Sign up
+  </button>
+  <button mat-raised-button color="primary" (click)="onButtonChange('login')">
+    Login
+  </button>
+  <app-auth-signin *ngIf="!authService.isLogin"></app-auth-signin>
+  <app-auth-login *ngIf="authService.isLogin"></app-auth-login>
+</div>

@@ -1,0 +1,62 @@
+<h1>{{ action }} Products</h1>
+<div mat-dialog-content>
+  <form [formGroup]="productForm">
+    <mat-form-field appearance="standard" class="col-sm-6">
+      <mat-label>Product name</mat-label>
+      <input
+        formControlName="productName"
+        matInput
+        placeholder="Product name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="standard" class="col-sm-6">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category" placeholder="Category">
+        <mat-option value="fashion"> Fashion</mat-option>
+        <mat-option value="jewelery"> Jewelery</mat-option>
+        <mat-option value="electronics"> Electronics</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-radio-group formControlName="avavilable" class="radio-group">
+      <mat-radio-button
+        *ngFor="let stock of avavilable"
+        [value]="stock"
+        class="radio-button"
+        >{{ stock }}</mat-radio-button
+      >
+    </mat-radio-group>
+    <mat-form-field appearance="standard" class="col-sm-6">
+      <mat-label>Price</mat-label>
+      <input
+        formControlName="price"
+        matInput
+        type="number"
+        placeholder="Price"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="standard" class="col-sm-6">
+      <mat-label>Image URL</mat-label>
+      <input formControlName="image" matInput placeholder="Image URL" />
+    </mat-form-field>
+    <mat-form-field appearance="standard" class="col-sm-12">
+      <mat-label>Description</mat-label>
+      <textarea
+        formControlName="description"
+        matInput
+        type="number"
+        placeholder="Description"
+      ></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="secondary">Close</button>
+  <button
+    mat-raised-button
+    mat-dialog-close
+    color="warn"
+    (click)="addProduct()"
+  >
+    {{ action }}
+  </button>
+</mat-dialog-actions>

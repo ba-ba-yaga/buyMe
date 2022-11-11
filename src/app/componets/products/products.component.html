@@ -1,0 +1,96 @@
+<div class="card-top container-fluid">
+  <div class="container d-flex">
+    <div class="item">
+      <a (click)="filter('')" href="javascript: void(0)">
+        <!-- <img
+          src="https://th.bing.com/th/id/OIP.hCE58WO1SKLWg9uRCFRp6AHaE1?pid=ImgDet&rs=1"
+          alt=""
+        /> -->
+        <h4>All products</h4>
+      </a>
+    </div>
+    <div class="item">
+      <a (click)="filter('electronics')" href="javascript: void(0)">
+        <!-- <img
+          src="https://th.bing.com/th/id/OIP.QC9q4F3hHscQAReRNzQDWQHaOO?pid=ImgDet&rs=1"
+          alt=""
+        /> -->
+        <h4>Electronics</h4>
+      </a>
+    </div>
+    <div class="item">
+      <a (click)="filter('fashion')" href="javascript: void(0)">
+        <!-- <img
+          src="https://th.bing.com/th/id/OIP.Z92nj0CoDEERedhCjbHvFQHaJb?pid=ImgDet&rs=1"
+          alt=""
+        /> -->
+        <h4>Fashion</h4>
+      </a>
+    </div>
+    <div class="item">
+      <a (click)="filter('jewelery')" href="javascript: void(0)">
+        <!-- <img
+          src="https://th.bing.com/th/id/OIP.-JSwQPH1FF0kGJNeOI6EYwHaJQ?pid=ImgDet&rs=1"
+          alt=""
+        /> -->
+        <h4>Jewelery</h4>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <ng-container
+      *ngFor="let item of filterCategory | filter: searchKey:'productName'"
+    >
+      <div class="card col-md-3" *ngIf="item !== ''">
+        <img src="{{ item.image }}" alt="{{ item.title }}" />
+        <h5
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+            font-size: 24px;
+          "
+        >
+          {{ item.productName.toUpperCase() }}
+        </h5>
+        <p
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          "
+        >
+          {{ item.description }}
+        </p>
+        <p>
+          <strong>${{ item.price }}</strong>
+        </p>
+        <button class="btn btn-danger mb-2" (click)="addToCart(item)">
+          Add to cart
+        </button>
+        <button mat-stroked-button color="warn" (click)="openView(item)">
+          View
+        </button>
+      </div>
+      <div class="container" *ngIf="item === '' || !filterCategory.length">
+        <div class="card">
+          <div style="text-align: center">
+            <h4>Oops! No items found..</h4>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="container" *ngIf="!filterCategory">
+      <div class="card">
+        <div style="text-align: center">
+          <h4>Oops! No items found..</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

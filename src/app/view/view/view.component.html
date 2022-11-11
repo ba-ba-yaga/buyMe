@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="card">
+    <img src="{{ selectedItem.image }}" alt="{{ selectedItem.title }}" />
+    <h5
+      style="
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100ch;
+        font-size: 24px;
+      "
+    >
+      {{ selectedItem.productName.toUpperCase() }}
+    </h5>
+    <p
+      style="
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100ch;
+      "
+    >
+      {{ selectedItem.description }}
+    </p>
+    <p>
+      <strong>${{ selectedItem.price }}</strong>
+    </p>
+    <mat-dialog-actions align="end" class="mb-1 m">
+      <button
+        mat-raised-button
+        mat-dialog-close
+        color="warn"
+        (click)="editProduct()"
+      >
+        Edit
+      </button>
+      <button
+        mat-button
+        mat-dialog-close
+        (click)="deleteProduct(selectedItem.id)"
+        color="secondary"
+      >
+        Delete
+      </button>
+    </mat-dialog-actions>
+  </div>
+</div>
